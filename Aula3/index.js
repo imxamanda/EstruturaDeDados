@@ -82,3 +82,32 @@ function sum(num1, num2){
 // chamando a execução da função
 var result = sum(2, 3);
 output(result);
+
+//declarando uma classe (construtor) quee representa um livro:
+function Book (title, pages, isbn) {
+    this.title = title;
+    this.pages = pages;
+    this.isbn = isbn;
+    this.printIsbn = function() {
+        console.log('ISBN: ' + this.isbn);
+    }
+}
+
+// para instanciar essa classe
+var book = new Book('Estrutura de Dados', 406, '978-85-7522-553-0');
+
+//Acessando suas propriedades 
+console.log(book.title); //exibe o título do livro
+book.title = 'Estrutura de Dados e algoritmos em JavaScript'// atualiza o valor do título
+console.log(book.title); //exibe o valor atualizado
+console.log('Este livro possui: ' + book.pages + ' páginas'); 
+
+Book.prototype.printTitle = function() {
+    console.log(this.title);
+};
+
+book.printTitle(); //chamada
+book.printIsbn();
+
+
+
