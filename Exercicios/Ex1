@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios JavaScript</title>
+</head>
+<body>
+<script>
+
+//1. Faça um script para solicitar o nome do usuário. Exiba uma mensagem de boas vindas com o nome.
+function welcome() {
+        var name = prompt('Qual seu nome?', '');
+        alert('Olá, ' + name + '! Seja Bem-vindo(a)!😁');
+        return name;
+    }
+
+// 2. Utilize uma estrutura de controle para descobrir se o valor de sua idade é par ou ímpar.
+function verificador(idade) {
+        if (idade % 2 === 0) {
+            return 'par';
+        } else {
+            return 'ímpar';
+        }
+    }
+
+//3. Faça um laço para imprimir todos os anos, do ano atual até o ano de seu nascimento.
+function print(nascimento) {
+        var atual = new Date().getFullYear();
+        console.log('Esse é o total de anos desde o seu nascimento, até o atual:');
+        for (var ano = nascimento; ano <= atual; ano++) {
+            console.log(ano);
+        }
+    }
+
+//4. Peça ao usuário para digitar idades de 10 pessoas. Exiba quantas pessoas são maior de idade (18 anos) e quantas são menores.
+function idadesPessoas() {
+        var maior18 = 0;
+        var menor18 = 0;
+        for (var i = 0; i < 10; i++) {
+            var idadePessoa = parseInt(prompt('Informe a idade das pessoas ' + (i + 1) + ':', ''));
+            if (idadePessoa >= 18) {
+                maior18++;
+            } else {
+                menor18++;
+            }
+        }
+        console.log('Pessoas maiores de idade: ' + maior18);
+        console.log('Pessoas menores de idade: ' + menor18);
+    }
+
+//5. Declare as seguintes propriedades (variáveis) em uma classe aluno (nome, idade e peso), instancie um objeto com seu nome. Depois acesse e altere os valores correspondentes aos seus tipos: nome(string), idade(inteiro), peso(double). Apresente na console o conteúdo de cada propriedade do objeto.
+
+class Aluno {
+        constructor(nome, idade, peso) {
+            this.nome = nome;
+            this.idade = idade;
+            this.peso = peso;
+        }
+    }
+    function main() {
+        var nomeUsuario = welcome();
+        var idadeUsuario = parseInt(prompt('Informe sua idade:', ''));
+        console.log('Sua idade é ' + verificador(idadeUsuario) + '.');
+        print(new Date().getFullYear() - idadeUsuario);
+        idadesPessoas();
+        
+        var meuAluno = new Aluno(nomeUsuario, idadeUsuario, 48); 
+        console.log('Nome: ' + meuAluno.nome);
+        console.log('Idade: ' + meuAluno.idade);
+        console.log('Peso: ' + meuAluno.peso);
+    }
+
+    main();
+
+
+
+</script>
+
+</body>
+</html>
