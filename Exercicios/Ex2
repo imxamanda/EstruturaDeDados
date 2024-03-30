@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Array e Pilha</title>
+</head>
+
+<body>
+    <script>
+
+        //01. Crie uma função que recebe um array de 2 números e coloque eles em ordem crescente. Não use o método sort.
+        function ex1() {
+            let array = [];
+
+            for (let i = 0; i < 2; i++) {
+                array.push(parseInt(prompt("Ex 01: Insira um número para ordenar")));
+            }
+
+            console.log("Ex 01:", sortArray(array));
+        }
+
+        // 02. Crie uma função que recebe um array de 3 números e coloque eles em ordem crescente. Crie sua própria função para isso.
+        function ex2() {
+            let array = [];
+
+            for (let i = 0; i < 3; i++) {
+                array.push(parseInt(prompt("Ex 02: Insira um número para ordenar")));
+            }
+
+            console.log("Ex 02:", sortArrayThree(array));
+        }
+
+        // 03. Crie um script que pergunte 3 números ao usuário, coloque em um array, depois exiba tal array. Modifique os elementos do array de modo a a sequência de números ficar do contrário. Ou seja, se digitou: 1,2,3 Vai aparecer: 3,2,1
+        function ex3() {
+            let array = [];
+
+            for (let i = 0; i < 3; i++) {
+                array.push(parseInt(prompt("Ex 03: Insira um número para a  sequência")));
+            }
+
+            console.log("Ex 03:", reverseArray(array));
+        }
+
+        // 04. Crie uma função que recebe um vetor e um número. Ela deve mostrar todos os índices onde esse número aparece no vetor, e não só apenas o primeiro e/ou último índice em que o número aparece (como nos métodos indexOf e lastIndexOf).
+        function ex4() {
+            let array = [];
+
+            for (let i = 0; i < 7; i++) {
+                array.push(parseInt(prompt("Ex 04: Insira um número")));
+            }
+
+            let numberToFind = parseInt(prompt("Ex 04: Insira um número a ser encontrado na função"));
+
+            console.log("Ex 04:", findIndexes(array, numberToFind));
+        }
+
+        // 05. Crie um script que pede um inteiro positivo para o usuário. Em seguida, popule uma array com os números de Fibonacci. Exiba o resultado usando o método join.
+        function ex5(n) {
+            const fibonacci = [0, 1]; 
+
+            for (let i = 2; i < n; i++) {
+                fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2]; // Calcula o próximo número de Fibonacci
+            }
+
+            return fibonacci;
+            }
+
+        const number = parseInt(prompt("Insira um número para gerar os números de Fibonacci:"));
+
+        const fibonacci = fibonacciArray(number);
+
+        console.log("Ex 05:", fibonacci.join(', '));
+
+        // 06. Faça o mesmo do exercício anterior, mas com fatorial. Fatorial de 0: 0! = '
+        //Fatorial de 1: 1 x elemento0 = 1
+        //Fatorial de 2: 2 x elemento1 = 2
+        //Fatorial de 3: 3 x elemento2 = 3 x 2 = 6
+        //...
+        //Fatorial de n: n x elemento(n-1) = n x (n-1)! = n!
+        function ex6(n) {
+            const fatorialArray = [0]; 
+
+            let fatorial = 1;
+
+            for (let i = 1; i <= n; i++) {
+            fatorial *= i; 
+            fatorialArray.push(fatorial); 
+        }
+
+        return fatorialArray;
+        }
+
+        const numeroFatorial = parseInt(prompt("Digite um inteiro positivo para gerar os fatoriais:"));
+         const fatArray = fatorialArray(numeroFatorial);
+
+        console.log("Fatoriais:", fatArray.map((value, index) => `Fatorial de ${index}: ${index}! = ${value}`).join('\n'));
+
+
+        // 07. Peça ao usuário uma quantidade de linhas e outra de colunas, depois declare tal matriz, inicialize todos os elementos de 1 até 'linha x coluna'. Para preencher cada elemento use a soma dos seus índices.
+        function ex7() {
+            //linhas
+            let rows = parseInt(prompt("Ex 07: Insira o número de linhas"));
+            //colunas
+            let columns = parseInt(prompt("Ex 07: Insira o número de colunas"));
+
+            console.log("Ex 07:", createMatrix(rows, columns));
+        }
+
+        // 08. Faça uma função para converter um número decimal em hexadecimal.
+
+        // função
+        function decimaltohex(decimal) {
+            return decimal.toString(16).toUpperCase();
+        }
+        // exercicio
+        function ex8() {
+            let decimal = parseInt(prompt("Ex 08: Insira um número decimal a ser convertido para hexadecimal"));
+
+            let hexadecimal = decimaltohex(decimal);
+
+            console.log("Ex 08: O número hexadecimal é:", hexadecimal);
+        }
+
+        // 09. Escreva um programa que leia 10 números. Para cada número lido, verifique e codifique deacordo com as regras a seguir:
+        //a. Se o número for par, empilhe na pilha;
+        //b. Se o número for ímpar, desempilhe um número da pilha. Caso a pilha esteja vazia, mostre uma mensagem;
+        //c. Se ao final do programa a pilha não estiver vazia, desempilhe todos os elementos, imprimindo-os na tela.
+        function ex9() {
+            let array = [];
+
+            for (let i = 0; i < 10; i++) {
+                array.push(parseInt(prompt("Ex 09: Insira um número")));
+            }
+
+            console.log("Ex 09:");
+            processNumbers(array);
+        }
+
+        // 10. Escreva um programa que leia 10 números. Para cada número lido, verifique e codifique de acordo com as regras a seguir:
+        //a. Se o número for par, empilhe na pilha chamada par;
+        //b. Se o número for ímpar, empilhe na pilha chamada impar;
+        //c. Se o número for zero (0), desempilhe um elemento de cada pilha. Caso alguma pilha esteja vazia, mostre uma mensagem de erro na tela.
+        //d. Ao final do programa desempilhe todos os elementos das duas pilhas, imprimindo-os na tela
+        function ex10() {
+            let array = [];
+
+            for (let i = 0; i < 10; i++) {
+                array.push(parseInt(prompt("Ex 10: Insira um número")));
+            }
+
+            console.log("Ex 10:");
+            processNumbersTwoStacks(array);
+        }
+
+        // Funções
+        function sortArray(array) {
+            return array[0] > array[1] ? [array[1], array[0]] : array;
+        }
+
+        function sortArrayThree(array) {
+            if (array[0] > array[1]) [array[0], array[1]] = [array[1], array[0]];
+
+            if (array[1] > array[2]) [array[1], array[2]] = [array[2], array[1]];
+
+            if (array[0] > array[1]) [array[0], array[1]] = [array[1], array[0]];
+
+            return array;
+        }
+
+        function reverseArray(array) {
+            return array.reverse();
+        }
+
+        function findIndexes(array, number) {
+            let indexes = [];
+
+            array.forEach((element, index) => {
+                if (element === number) {
+                    indexes.push(index);
+                }
+            });
+            
+            return indexes;
+        }
+
+        function fibonacci(n) {
+            let sequence = [0, 1];
+
+            for (let i = 2; i < n; i++) {
+                sequence[i] = sequence[i - 1] + sequence[i - 2];
+            }
+
+            return sequence.join(', ');
+        }
+
+        function fatorial(n) {
+            let result = 'Fatorial de ' + n + ': ' + n + '!';
+
+            if (n === 0) {
+                result += ' = 1';
+            } else {
+                let factorial = 1;
+                for (let i = 1; i <= n; i++) {
+                    factorial *= i;
+                    if (i === 1) {
+                        result += ' = ' + i;
+                    } else {
+                        result += ' x ' + i;
+                    }
+                }
+
+                result += ' = ' + factorial;
+            }
+
+            return result;
+        }
+
+        function createMatrix(rows, columns) {
+            let matrix = [];
+
+            for (let i = 0; i < rows; i++) {
+                let row = [];
+                for (let j = 0; j < columns; j++) {
+                    row.push((i + 1) * (j + 1));
+                }
+
+                matrix.push(row);
+            }
+
+            return matrix;
+        }
+
+        function processNumbers(array) {
+            let stack = [];
+
+            array.forEach(number => {
+
+                if (number % 2 === 0) {
+                    stack.push(number);
+                } else {
+                    if (stack.length > 0) {
+                        stack.pop();
+                    } else {
+                        console.log('Pilha vazia!');
+                    }
+                }
+            });
+
+            while (stack.length > 0) {
+
+                console.log(stack.pop());
+
+            }
+        }
+
+        function processNumbersTwoStacks(array) {
+            let evenStack = [];
+
+            let oddStack = [];
+
+            array.forEach(number => {
+
+                if (number === 0) {
+                    if (evenStack.length > 0 && oddStack.length > 0) {
+                        evenStack.pop();
+                        oddStack.pop();
+                    } else {
+                        console.log('Uma das pilhas está vazia!');
+                    }
+
+                } else if (number % 2 === 0) {
+                    evenStack.push(number);
+                } else {
+                    oddStack.push(number);
+                }
+            });
+
+            while (evenStack.length > 0) {
+                console.log(evenStack.pop());
+            }
+
+            while (oddStack.length > 0) {
+                console.log(oddStack.pop());
+            }
+        }
+
+        // Exercícios
+        ex1();
+        ex2();
+        ex3();
+        ex4();
+        ex5();
+        ex6();
+        ex7();
+        ex8();
+        ex9();
+        ex10();
+
+
+
+
+
+    </script>
+</body>
+
+</html>
