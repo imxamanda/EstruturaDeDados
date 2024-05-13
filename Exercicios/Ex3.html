@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Aula 07</title>
+</head>
+<body>
+<script>
+
+class Aluno {
+    constructor(nome, nota, status) {
+        this.nome = nome;
+        this.nota = nota;
+        this.status = status;
+    }
+}
+
+class Disciplina {
+    constructor() {
+        this.lista = [];
+    }
+
+    addAluno(nome, nota, status) {
+        if (this.lista.length < 40) {
+            this.lista.push(new Aluno(nome, nota, status));
+        } else {
+            console.log("A lista de chamada está cheia.");
+        }
+    }
+
+    removerAluno(nome) {
+        this.lista = this.lista.filter(aluno => aluno.nome !== nome);
+    }
+
+    ordenarPorNota() {
+        this.lista.sort((a, b) => b.nota - a.nota);
+    }
+
+    listarAlunos() {
+        this.lista.forEach((aluno, index) => {
+            console.log(`Pos ${index + 1} Aluno ${aluno.nome} nota ${aluno.nota} Status ${aluno.status}`);
+        });
+    }
+
+    listarAlunosAtivos() {
+        this.lista.filter(aluno => aluno.status === 'A').forEach((aluno, index) => {
+            console.log(`Pos ${index + 1} Aluno ${aluno.nome} nota ${aluno.nota} Status ${aluno.status}`);
+        });
+    }
+}
+
+let disciplina = new Disciplina();
+disciplina.addAluno('Pedro', 8.9, 'A');
+disciplina.addAluno('Ana', 8.7, 'A');
+disciplina.addAluno('Maria', 9.3, 'I');
+disciplina.listarAlunos();
+disciplina.removerAluno('Pedro');
+disciplina.listarAlunos();
+disciplina.addAluno('Paula', 9.1, 'A');
+disciplina.listarAlunos();
+disciplina.addAluno('Pedro', 8.9, 'A');
+disciplina.addAluno('Joao', 8.5, 'A');
+disciplina.ordenarPorNota();
+disciplina.listarAlunos();
+disciplina.listarAlunosAtivos();
+
+</script>
+
+</body>
+</html>
